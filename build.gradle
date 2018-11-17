@@ -13,6 +13,7 @@ buildscript {
 plugins {
     id 'java'
     id 'org.springframework.boot' version '1.5.17.RELEASE'
+    id 'org.flywaydb.flyway' version '4.2.0'
 }
 
 sourceCompatibility = 1.8
@@ -28,3 +29,13 @@ dependencies {
     compile('mysql:mysql-connector-java:5.1.46')
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
+
+flyway {
+    url = "jdbc:mysql://localhost:3306/userprofile?user=root&useSSL=false"
+    user = 'root'
+    password = ''
+}
+
+bootRun.environment([
+        "MANAGEMENT_SECURITY_ENABLED": false
+])
